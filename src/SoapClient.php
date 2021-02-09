@@ -194,12 +194,19 @@ class SoapClient
     }
 
     /**
-     * @param  string  $username
+     * @param  mixed  $login
      * @param  string  $password
      * @return $this
      */
-    public function withBasicAuth(string $username, string $password)
+    public function withBasicAuth($login, string $password=null)
     {
+        if(is_array($login)){
+            $username = $login['username'];
+            $password = $login['password'];
+
+        }else{
+            $username = $login;
+        }
         $this->middlewares = array_merge_recursive($this->middlewares, [
             'basic' => new BasicAuthMiddleware($username, $password),
         ]);
