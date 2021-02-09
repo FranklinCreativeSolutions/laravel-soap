@@ -203,6 +203,8 @@ class SoapClient
         if(is_array($login)){
             $username = $login['username'];
             $password = $login['password'];
+        }else{
+            $username = $login;
         }
         $this->middlewares = array_merge_recursive($this->middlewares, [
             'basic' => new BasicAuthMiddleware($username, $password),
