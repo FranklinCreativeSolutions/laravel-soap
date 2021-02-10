@@ -388,7 +388,7 @@ class SoapClient
                 if (is_bool($setupItemConfig)) {
                     $this->{Str::camel($setupItem)}();
                 } elseif (is_array($setupItemConfig)) {
-                    $this->{Str::camel($setupItem)}($this->arrayKeysToCamel($setupItemConfig));
+                    $this->{Str::camel($setupItem)}($setupItemConfig);
                 } elseif (is_string($setupItemConfig)) {
                     $this->{Str::camel($setupItem)}($setupItemConfig);
                 }
